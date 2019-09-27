@@ -19,6 +19,7 @@ class LandingTouchViewController: UIViewController {
         var touch: UITouch!
     }
     
+    private let settingsImageView = UIImageView()
     private var circles = [CircleModel]()
     private let colorArray = [UIColor.systemTeal, UIColor.systemYellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen, UIColor.systemPink]
     private let circleSize: CGFloat = 50
@@ -27,14 +28,50 @@ class LandingTouchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.systemGray4
+        self.view.backgroundColor = UIColor.backgroundColor
+        self.createSettingsView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    // MARK: Private Methods
+    /// Create & configure the settings icon
+    fileprivate func createSettingsView() -> Void {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(settingsButtonAction(tapGestureRecognizer:)))
+        self.settingsImageView.isUserInteractionEnabled = true
+        self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
+        let settingsImage = UIImage.init(imageLiteralResourceName: "SettingsIcon")
+        // Change the settings image color to match our color assets.
+        settingsImage.withTintColor(UIColor.iconColor, renderingMode: UIImage.RenderingMode.alwaysTemplate)
+        self.settingsImageView.image = settingsImage
+        
+        self.view.addSubview(self.settingsImageView)
+        self.settingsImageView.snp.makeConstraints{(make) -> Void in
+            make.height.width.equalTo(40)
+            make.right.equalTo(self.view).offset(-15)
+            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
+        }
+    }
+    
+    /// Display the Settings screen modally
+    @objc func settingsButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
+        let settingsViewController = SettingsViewController()
+        let navController = UINavigationController(rootViewController: settingsViewController)
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 
     // MARK: Touch Recognizers
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let location = touch.location(in: self.view)
+        
+        // check if the touch is within the settings button
+        if (location.x > self.settingsImageView.frame.origin.x && location.y < (self.settingsImageView.frame.origin.y + self.settingsImageView.frame.size.height)) {
+            return
+        }
         
         let circleView = CircleView(color: colorArray[circles.count], size: circleSize)
         let circleObject = CircleModel(circleView: circleView, touch: touch)
