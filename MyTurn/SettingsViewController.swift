@@ -37,10 +37,12 @@ class SettingsViewController: UIViewController  {
     }
     
     private func createSoundToggle() -> UIView {
+        let soundEffectsKey = "soundEffectsEnabled"
         let toggleAction = { (switchState: Bool) -> Void in
-            UserDefaults.standard.set(switchState, forKey: "soundEffectsEnabled")
+            UserDefaults.standard.set(switchState, forKey: soundEffectsKey)
         }
-        let soundToggle = SwitchView(text: "Sound Effects", action: toggleAction)
+        let state = UserDefaults.standard.bool(forKey: soundEffectsKey)
+        let soundToggle = SwitchView(text: "Sound Effects", isOn: state, action: toggleAction)
         return soundToggle
     }
     

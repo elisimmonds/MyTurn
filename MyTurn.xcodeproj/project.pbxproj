@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		96C83691233E829800149A2B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83690233E829800149A2B /* UIColorExtension.swift */; };
 		96C83693233E920900149A2B /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83692233E920900149A2B /* SwitchView.swift */; };
 		96C83696233EA70800149A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96C83694233EA70800149A2B /* Main.storyboard */; };
+		96C83698233EB18900149A2B /* TimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83697233EB18900149A2B /* TimerLabel.swift */; };
 		96FB0A1D233D3A5100DCFAB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB0A1C233D3A5100DCFAB7 /* AppDelegate.swift */; };
 		96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB0A1E233D3A5100DCFAB7 /* SceneDelegate.swift */; };
 		96FB0A26233D3A5200DCFAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96FB0A25233D3A5200DCFAB7 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		96C83690233E829800149A2B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		96C83692233E920900149A2B /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		96C83695233EA70800149A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		96C83697233EB18900149A2B /* TimerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLabel.swift; sourceTree = "<group>"; };
 		96FB0A19233D3A5100DCFAB7 /* MyTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96FB0A1C233D3A5100DCFAB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96FB0A1E233D3A5100DCFAB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,11 +73,12 @@
 				96C8368E233E816E00149A2B /* SettingsViewController.swift */,
 				96FB0A30233D3A8B00DCFAB7 /* CircleView.swift */,
 				96C83692233E920900149A2B /* SwitchView.swift */,
+				96C83697233EB18900149A2B /* TimerLabel.swift */,
+				96C83690233E829800149A2B /* UIColorExtension.swift */,
 				96FB0A25233D3A5200DCFAB7 /* Assets.xcassets */,
 				96C83694233EA70800149A2B /* Main.storyboard */,
 				96FB0A27233D3A5200DCFAB7 /* LaunchScreen.storyboard */,
 				96FB0A2A233D3A5200DCFAB7 /* Info.plist */,
-				96C83690233E829800149A2B /* UIColorExtension.swift */,
 			);
 			path = MyTurn;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				96FB0A31233D3A8B00DCFAB7 /* CircleView.swift in Sources */,
 				96FB0A1D233D3A5100DCFAB7 /* AppDelegate.swift in Sources */,
 				96C83693233E920900149A2B /* SwitchView.swift in Sources */,
+				96C83698233EB18900149A2B /* TimerLabel.swift in Sources */,
 				96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */,
 				96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */,
 				96C83691233E829800149A2B /* UIColorExtension.swift in Sources */,

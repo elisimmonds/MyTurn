@@ -20,6 +20,8 @@ class LandingTouchViewController: UIViewController {
     }
     
     private let settingsImageView = UIImageView()
+    private let timerLabel = TimerLabel()
+    private var timer: Timer?
     private var circles = [CircleModel]()
     private let colorArray = [UIColor.systemTeal, UIColor.systemYellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen, UIColor.systemPink]
     private let circleSize: CGFloat = 50
@@ -30,37 +32,12 @@ class LandingTouchViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.backgroundColor
         self.createSettingsView()
+        self.createTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    // MARK: Private Methods
-    /// Create & configure the settings icon
-    fileprivate func createSettingsView() -> Void {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(settingsButtonAction(tapGestureRecognizer:)))
-        self.settingsImageView.isUserInteractionEnabled = true
-        self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
-        let settingsImage = UIImage.init(imageLiteralResourceName: "SettingsIcon")
-        // Change the settings image color to match our color assets.
-        settingsImage.withTintColor(UIColor.iconColor, renderingMode: UIImage.RenderingMode.alwaysTemplate)
-        self.settingsImageView.image = settingsImage
-        
-        self.view.addSubview(self.settingsImageView)
-        self.settingsImageView.snp.makeConstraints{(make) -> Void in
-            make.height.width.equalTo(40)
-            make.right.equalTo(self.view).offset(-15)
-            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
-        }
-    }
-    
-    /// Display the Settings screen modally
-    @objc func settingsButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
-        let settingsViewController = SettingsViewController()
-        let navController = UINavigationController(rootViewController: settingsViewController)
-        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 
     // MARK: Touch Recognizers
@@ -82,6 +59,10 @@ class LandingTouchViewController: UIViewController {
             make.centerY.equalTo(location.y)
         }
         circles.append(circleObject)
+        
+        if (circles.count >= 2) {
+            startTimer()
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -100,6 +81,66 @@ class LandingTouchViewController: UIViewController {
         guard let touch = touches.first else { return }
         
         self.removeCircleForTouch(touch: touch)
+        
+        if (circles.count < 2) {
+            cancelTimer() // les than two circles on screen
+        } else {
+            startTimer() // there are still enough players, restart the timer.
+        }
+    }
+    
+    // MARK: Private Methods
+    /// Create & configure the settings icon
+    private func createSettingsView() -> Void {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(settingsButtonAction(tapGestureRecognizer:)))
+        self.settingsImageView.isUserInteractionEnabled = true
+        self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
+        // Change the settings image color to match our color assets.
+        let settingsImage = UIImage.init(named: "SettingsIcon")?.withTintColor(UIColor.iconColor, renderingMode: .automatic)
+        self.settingsImageView.image = settingsImage
+        
+        self.view.addSubview(self.settingsImageView)
+        self.settingsImageView.snp.makeConstraints{(make) -> Void in
+            make.height.width.equalTo(40)
+            make.right.equalTo(self.view).offset(-15)
+            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
+        }
+    }
+    
+    /// Display the Settings screen modally
+    @objc private func settingsButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
+        let settingsViewController = SettingsViewController()
+        let navController = UINavigationController(rootViewController: settingsViewController)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+    }
+    
+    private func createTimer() -> Void {
+        self.view.addSubview(self.timerLabel)
+        self.timerLabel.snp.makeConstraints{(make) -> Void in
+            make.centerX.equalTo(self.view)
+            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
+        }
+        self.timerLabel.isHidden = true
+    }
+    
+    private func startTimer() -> Void {
+        self.timerLabel.isHidden = false
+        
+        var second = 3
+        self.timerLabel.text = "\(second)"
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            second -= 1
+            self.timerLabel.text = "\(second)"
+            if (second == 0) {
+                // TODO: Winner completion animation
+                timer.invalidate()
+            }
+        }
+    }
+    
+    private func cancelTimer() {
+        self.timerLabel.isHidden = true
+        self.timer?.invalidate()
     }
     
     // MARK: Circle Model array operations

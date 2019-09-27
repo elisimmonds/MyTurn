@@ -17,11 +17,12 @@ class SwitchView: UIView {
     
     let margin: CGFloat = 10
     
-    convenience init(text: String, action: ((Bool)->())?) {
+    convenience init(text: String, isOn: Bool, action: ((Bool)->())?) {
         self.init()
         
-        self.descriptionLabel.text = "Sound Effects"
+        self.descriptionLabel.text = text
         self.toggleAction = action
+        self.toggleSwitch.isOn = isOn
         self.toggleSwitch.addTarget(self, action: #selector(buttonClicked(_:)), for: .valueChanged)
         self.addSubview(descriptionLabel)
         self.addSubview(toggleSwitch)
@@ -35,7 +36,6 @@ class SwitchView: UIView {
             make.bottom.equalTo(self).offset(-margin)
             make.right.equalTo(self.toggleSwitch.snp.left).offset(-margin)
         }
-        
     }
     
      @objc func buttonClicked(_ sender: Any) {

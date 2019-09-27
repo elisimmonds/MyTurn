@@ -10,5 +10,5 @@ import UIKit
 
 extension UIColor {
     static let backgroundColor = UIColor.systemGray5
-    static let iconColor = UIColor.systemFill
+    static let iconColor = UIColor.systemGray
 }
