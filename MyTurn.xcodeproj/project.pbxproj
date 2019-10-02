@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		828112F5234013A6009843BD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828112F4234013A6009843BD /* RoundedButton.swift */; };
 		96C8368D233E777100149A2B /* LandingTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368C233E777100149A2B /* LandingTouchViewController.swift */; };
 		96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368E233E816E00149A2B /* SettingsViewController.swift */; };
 		96C83691233E829800149A2B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83690233E829800149A2B /* UIColorExtension.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		828112F4234013A6009843BD /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		96C8368C233E777100149A2B /* LandingTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingTouchViewController.swift; sourceTree = "<group>"; };
 		96C8368E233E816E00149A2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		96C83690233E829800149A2B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				96FB0A30233D3A8B00DCFAB7 /* CircleView.swift */,
 				96C83692233E920900149A2B /* SwitchView.swift */,
 				96C83697233EB18900149A2B /* TimerLabel.swift */,
+				828112F4234013A6009843BD /* RoundedButton.swift */,
 				96C83690233E829800149A2B /* UIColorExtension.swift */,
 				96FB0A25233D3A5200DCFAB7 /* Assets.xcassets */,
 				96C83694233EA70800149A2B /* Main.storyboard */,
@@ -165,6 +168,7 @@
 				96FB0A31233D3A8B00DCFAB7 /* CircleView.swift in Sources */,
 				96FB0A1D233D3A5100DCFAB7 /* AppDelegate.swift in Sources */,
 				96C83693233E920900149A2B /* SwitchView.swift in Sources */,
+				828112F5234013A6009843BD /* RoundedButton.swift in Sources */,
 				96C83698233EB18900149A2B /* TimerLabel.swift in Sources */,
 				96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */,
 				96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */,

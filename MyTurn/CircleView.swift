@@ -10,11 +10,13 @@ import UIKit
 import SnapKit
 
 class CircleView: UIView {
-    var circleLayer: CAShapeLayer!
-    var backgroundLayer: CAShapeLayer!
-    var indicater: UIView!
+    public var color: UIColor?
     
-    let innerCircleView = UIView()
+    private var circleLayer: CAShapeLayer!
+    private var backgroundLayer: CAShapeLayer!
+    private var indicater: UIView!
+    
+    private let innerCircleView = UIView()
     private var size: CGFloat = 0
     private var offset: CGFloat = 10
 
@@ -22,6 +24,7 @@ class CircleView: UIView {
         self.init()
         
         self.size = size
+        self.color = color
         self.innerCircleView.backgroundColor = color
         self.innerCircleView.layer.cornerRadius = (size - (self.offset * 2)) / 2
         self.innerCircleView.clipsToBounds = true
@@ -49,7 +52,7 @@ class CircleView: UIView {
         circleLayer.strokeEnd = 0.0
         layer.addSublayer(circleLayer)
         
-        startAnimation(duration: 2)
+        startAnimation(duration: 3)
     }
     
     public func startAnimation(duration: TimeInterval) {
