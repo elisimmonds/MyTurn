@@ -14,10 +14,11 @@ class LandingTouchViewController: UIViewController {
     private let timerLabel = TimerLabel()
     private let resetButton = RoundedButton(title: "Reset")
     
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private var timer: Timer?
     private var circles = Dictionary<UITouch, CircleView>()
     private let colorArray = [UIColor.systemTeal, UIColor.systemYellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen, UIColor.systemPink]
-    private let circleSize: CGFloat = 100
+    private let circleSize: CGFloat = 125
 
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -38,6 +39,9 @@ class LandingTouchViewController: UIViewController {
     // MARK: Touch Recognizers
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            if (self.circles.count == self.colorArray.count) {
+                return; // the max touches supported is equal to the number of colors we have available.
+            }
             let location = touch.location(in: self.view)
             
             // check if the touch is within the settings button
@@ -81,6 +85,12 @@ class LandingTouchViewController: UIViewController {
             } else {
                 startTimer() // there are still enough players, restart the timer.
             }
+        }
+        
+        if (self.circles.count == 0) {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.resetButtonAction()
+            })
         }
     }
     
@@ -140,13 +150,20 @@ class LandingTouchViewController: UIViewController {
             self.timer?.invalidate()
         }
         self.timerLabel.isHidden = false
+        let hapticFeedbackEnabled = UserDefaults.standard.bool(forKey: Constants.hapticFeedbackKey)
+        if (hapticFeedbackEnabled) {
+            self.feedbackGenerator.prepare()
+        }
         
-        // Countdown timer and show each second on the label
+        // Countdown timer and show each second on the label and add impact
         var second = 3
         self.timerLabel.text = "\(second)"
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             second -= 1
             self.timerLabel.text = "\(second)"
+            if (hapticFeedbackEnabled) {
+                self.feedbackGenerator.impactOccurred()
+            }
             if (second == 0) {
                 timer.invalidate()
                 self.winnerAction()

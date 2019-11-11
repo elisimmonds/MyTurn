@@ -27,7 +27,7 @@ class SettingsViewController: UIViewController  {
     }
     
     private func createSettingsViews() -> Void {
-        let toggle = self.createSoundToggle()
+        let toggle = self.hapticFeedbackToggle()
         self.view.addSubview(toggle)
         let topInset = self.view.safeAreaInsets.top
         toggle.snp.makeConstraints{(make) -> Void in
@@ -36,7 +36,17 @@ class SettingsViewController: UIViewController  {
         }
     }
     
-    private func createSoundToggle() -> UIView {
+    private func hapticFeedbackToggle() -> UIView {
+        let toggleAction = { (switchState: Bool) -> Void in
+            UserDefaults.standard.set(switchState, forKey: Constants.hapticFeedbackKey)
+        }
+        let state = UserDefaults.standard.bool(forKey: Constants.hapticFeedbackKey)
+        if state == nil { state = true } // default to set ON
+        let soundToggle = SwitchView(text: "Haptic Feedback", isOn: state, action: toggleAction)
+        return soundToggle
+    }
+    
+    private func soundToggle() -> UIView {
         let soundEffectsKey = "soundEffectsEnabled"
         let toggleAction = { (switchState: Bool) -> Void in
             UserDefaults.standard.set(switchState, forKey: soundEffectsKey)

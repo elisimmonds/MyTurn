@@ -14,6 +14,7 @@
 		96C83693233E920900149A2B /* SwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83692233E920900149A2B /* SwitchView.swift */; };
 		96C83696233EA70800149A2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96C83694233EA70800149A2B /* Main.storyboard */; };
 		96C83698233EB18900149A2B /* TimerLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83697233EB18900149A2B /* TimerLabel.swift */; };
+		96DFB513237A12900012A083 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DFB512237A12900012A083 /* Constants.swift */; };
 		96FB0A1D233D3A5100DCFAB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB0A1C233D3A5100DCFAB7 /* AppDelegate.swift */; };
 		96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96FB0A1E233D3A5100DCFAB7 /* SceneDelegate.swift */; };
 		96FB0A26233D3A5200DCFAB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96FB0A25233D3A5200DCFAB7 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 		96C83692233E920900149A2B /* SwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView.swift; sourceTree = "<group>"; };
 		96C83695233EA70800149A2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96C83697233EB18900149A2B /* TimerLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLabel.swift; sourceTree = "<group>"; };
+		96DFB512237A12900012A083 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		96FB0A19233D3A5100DCFAB7 /* MyTurn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTurn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96FB0A1C233D3A5100DCFAB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96FB0A1E233D3A5100DCFAB7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				96C83697233EB18900149A2B /* TimerLabel.swift */,
 				828112F4234013A6009843BD /* RoundedButton.swift */,
 				96C83690233E829800149A2B /* UIColorExtension.swift */,
+				96DFB512237A12900012A083 /* Constants.swift */,
 				96FB0A25233D3A5200DCFAB7 /* Assets.xcassets */,
 				96C83694233EA70800149A2B /* Main.storyboard */,
 				96FB0A27233D3A5200DCFAB7 /* LaunchScreen.storyboard */,
@@ -169,6 +172,7 @@
 				96FB0A1D233D3A5100DCFAB7 /* AppDelegate.swift in Sources */,
 				96C83693233E920900149A2B /* SwitchView.swift in Sources */,
 				828112F5234013A6009843BD /* RoundedButton.swift in Sources */,
+				96DFB513237A12900012A083 /* Constants.swift in Sources */,
 				96C83698233EB18900149A2B /* TimerLabel.swift in Sources */,
 				96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */,
 				96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */,
