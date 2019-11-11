@@ -118,6 +118,12 @@ class LandingTouchViewController: UIViewController {
             make.width.equalTo(90)
         }
         self.resetButton.backgroundColor = UIColor.iconColor
+        self.resetButton.addTarget(self, action: #selector(resetButtonAction), for: .touchUpInside)
+    }
+    
+    @objc private func resetButtonAction() -> Void {
+        self.view.backgroundColor = UIColor.backgroundColor
+        self.cancelTimer()
     }
     
     private func createTimer() -> Void {
@@ -135,6 +141,7 @@ class LandingTouchViewController: UIViewController {
         }
         self.timerLabel.isHidden = false
         
+        // Countdown timer and show each second on the label
         var second = 3
         self.timerLabel.text = "\(second)"
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
@@ -153,10 +160,21 @@ class LandingTouchViewController: UIViewController {
     }
     
     private func winnerAction() -> Void {
+        // Choose a random winner
         let randomInt = Int.random(in: 0..<self.circles.count)
         let winningTouch = Array(self.circles.keys)[randomInt]
+        
+        // Animate the background color change and winning circle color change
         UIView.animate(withDuration: 1.0) {
             self.view.backgroundColor = self.circles[winningTouch]?.color
+            self.circles[winningTouch]?.setWinningState()
+        }
+        
+        // Remove all non-winners from the board
+        for touch in self.circles.keys {
+            if (touch != winningTouch) {
+                self.removeCircleForTouch(touch: touch)
+            }
         }
     }
     

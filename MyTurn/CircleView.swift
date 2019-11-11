@@ -55,6 +55,11 @@ class CircleView: UIView {
         startAnimation(duration: 3)
     }
     
+    public func setWinningState() -> Void {
+        backgroundLayer.strokeColor = UIColor.clear.cgColor
+        circleLayer.strokeColor = UIColor.black.cgColor
+    }
+    
     public func startAnimation(duration: TimeInterval) {
         // We want to animate the strokeEnd property of the circleLayer
         let animation = CABasicAnimation(keyPath: "strokeEnd")
