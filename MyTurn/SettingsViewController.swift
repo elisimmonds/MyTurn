@@ -40,8 +40,10 @@ class SettingsViewController: UIViewController  {
         let toggleAction = { (switchState: Bool) -> Void in
             UserDefaults.standard.set(switchState, forKey: Constants.hapticFeedbackKey)
         }
+        if UserDefaults.standard.object(forKey: Constants.hapticFeedbackKey) == nil {
+            toggleAction(true)
+        }
         let state = UserDefaults.standard.bool(forKey: Constants.hapticFeedbackKey)
-        if state == nil { state = true } // default to set ON
         let soundToggle = SwitchView(text: "Haptic Feedback", isOn: state, action: toggleAction)
         return soundToggle
     }
