@@ -17,7 +17,7 @@ class LandingTouchViewController: UIViewController {
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private var timer: Timer?
     private var circles = Dictionary<UITouch, CircleView>()
-    private let colorArray = [UIColor.systemTeal, UIColor.systemYellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen, UIColor.systemPink]
+    private let colorArray = [UIColor.systemTeal, UIColor.systemYellow, UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen]
     private let circleSize: CGFloat = 125
 
     // MARK: Lifecycle Methods
@@ -38,10 +38,13 @@ class LandingTouchViewController: UIViewController {
 
     // MARK: Touch Recognizers
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        if (self.circles.count == self.colorArray.count) {
+            return; // the max touches supported is equal to the number of colors we have available.
+        }
+        
         for touch in touches {
-            if (self.circles.count == self.colorArray.count) {
-                return; // the max touches supported is equal to the number of colors we have available.
-            }
             let location = touch.location(in: self.view)
             
             // check if the touch is within the settings button
@@ -65,6 +68,8 @@ class LandingTouchViewController: UIViewController {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+        
         for touch in touches {
             if let circle = self.getCircleForTouch(touch: touch) {
                 let location = touch.location(in: self.view)
@@ -77,6 +82,8 @@ class LandingTouchViewController: UIViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
         for touch in touches {
             self.removeCircleForTouch(touch: touch)
             
@@ -92,6 +99,36 @@ class LandingTouchViewController: UIViewController {
                 self.resetButtonAction()
             })
         }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        
+        for touch in touches {
+            self.removeCircleForTouch(touch: touch)
+                
+            if (circles.count < 2) {
+                cancelTimer() // les than two circles on screen
+            } else {
+                startTimer() // there are still enough players, restart the timer.
+            }
+        }
+            
+        if (self.circles.count == 0) {
+            UIView.animate(withDuration: 1.0, animations: {
+                self.resetButtonAction()
+            })
+        }
+        
+        let alertController = UIAlertController(title: "Exceeded max number of users",
+                                                message: "Your device can only have 5 simultanous touches at a given time.",
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok",
+                                                style: .cancel,
+                                                handler: { action in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alertController, animated: true, completion: nil)
     }
     
     // MARK: Private Methods
