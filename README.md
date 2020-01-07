@@ -1,6 +1,6 @@
 # MyTurn
 
-Designed to help users decide who will take the first turn in everyday situations.
+Designed to help users decide who will take the first turn in everyday situations. Simply have each person touch the screen and the countdown timer will begin. Once the time is up, the background color will transition to the winning users color and highlight the winning finger with a black circle. 
 
 ## Installation guide:
 1. Clone the repo locally.
