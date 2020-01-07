@@ -14,7 +14,7 @@ class CircleView: UIView {
     
     private var circleLayer: CAShapeLayer!
     private var backgroundLayer: CAShapeLayer!
-    private var indicater: UIView!
+    private var indicator: UIView!
     
     private let innerCircleView = UIView()
     private var size: CGFloat = 0
@@ -51,8 +51,6 @@ class CircleView: UIView {
         circleLayer.lineWidth = self.offset
         circleLayer.strokeEnd = 0.0
         layer.addSublayer(circleLayer)
-        
-        startAnimation(duration: 3)
     }
     
     public func setWinningState() -> Void {
@@ -81,9 +79,13 @@ class CircleView: UIView {
         // Do the actual animation
         circleLayer.add(animation, forKey: "animateCircle")
         
+        if let _ = indicator {
+            // remove the rotating "load" animation if it already exists.
+            indicator.layer.removeAnimation(forKey: "orbit")
+        }
         
-        indicater = UIView(frame:CGRect(x: 0, y: 0, width: size, height: size))
-        indicater.backgroundColor = UIColor.red
+        indicator = UIView(frame:CGRect(x: 0, y: 0, width: size, height: size))
+        indicator.backgroundColor = UIColor.red
         let boundingRect = CGRect(x: -150, y: -150, width: 300, height: 300)
         
         let orbit = CAKeyframeAnimation()
@@ -95,7 +97,7 @@ class CircleView: UIView {
         orbit.calculationMode = CAAnimationCalculationMode.paced;
         orbit.rotationMode = CAAnimationRotationMode.rotateAuto;
         
-        indicater.layer.add(orbit, forKey: "orbit")
+        indicator.layer.add(orbit, forKey: "orbit")
     }
 
 }

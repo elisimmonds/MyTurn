@@ -183,21 +183,31 @@ class LandingTouchViewController: UIViewController {
     }
     
     private func startTimer() -> Void {
+        // reset timer if it exists
         if (self.timer != nil) {
             self.timer?.invalidate()
         }
         self.timerLabel.isHidden = false
+        
+        // setup haptic feedback for the user
         let hapticFeedbackEnabled = UserDefaults.standard.bool(forKey: Constants.hapticFeedbackKey)
         if (hapticFeedbackEnabled) {
             self.feedbackGenerator.prepare()
+        }
+        
+        // reset circle animation when timer restarts
+        for circle in circles.values {
+            circle.startAnimation(duration: 3)
         }
         
         // Countdown timer and show each second on the label and add impact
         var second = 3
         self.timerLabel.text = "\(second)"
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            // set timer label
             second -= 1
             self.timerLabel.text = "\(second)"
+            // send haptic feedback to users device
             if (hapticFeedbackEnabled) {
                 self.feedbackGenerator.impactOccurred()
             }
