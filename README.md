@@ -9,10 +9,10 @@ Designed to help users decide who will take the first turn in everyday situation
 4. Open the workspace and run the project.
 
 ## Features
-Supports native iOS light/dark modes
-Background change to the winning circles color
-Countdown timer
-Animations surrounding the circles
+* Supports native iOS light/dark modes
+* Background change to the winning circles color
+* Countdown timer
+* Animations surrounding the circles
 
 ## Sample Images
 ![Deciding a Winner](https://user-images.githubusercontent.com/13975676/71921309-74c42880-313d-11ea-8e79-eaea26bc3565.png)
