@@ -11,6 +11,7 @@ import SnapKit
 
 class LandingTouchViewController: UIViewController {
     private let settingsImageView = UIImageView()
+    private let infoImageView = UIImageView()
     private let timerLabel = TimerLabel()
     private let resetButton = RoundedButton(title: "Reset")
     
@@ -27,6 +28,7 @@ class LandingTouchViewController: UIViewController {
         self.view.backgroundColor = UIColor.backgroundColor
         self.view.isMultipleTouchEnabled = true
         self.createSettingsView()
+        self.createInfoView()
         self.createTimer()
         self.createResetButton()
     }
@@ -48,7 +50,8 @@ class LandingTouchViewController: UIViewController {
             let location = touch.location(in: self.view)
             
             // check if the touch is within the settings button
-            if (location.x > self.settingsImageView.frame.origin.x && location.y < (self.settingsImageView.frame.origin.y + self.settingsImageView.frame.size.height)) {
+            if (self.isWithinBounds(of: self.settingsImageView, location: location) &&
+                self.isWithinBounds(of: self.infoImageView, location: location)) {
                 continue
             }
             
@@ -153,6 +156,31 @@ class LandingTouchViewController: UIViewController {
     @objc private func settingsButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
         let settingsViewController = SettingsViewController()
         let navController = UINavigationController(rootViewController: settingsViewController)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+    }
+    
+    /// Create & configure the info icon
+    private func createInfoView() -> Void {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(infoButtonAction(tapGestureRecognizer:)))
+        self.settingsImageView.isUserInteractionEnabled = true
+        self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
+        // Change the settings image color to match our color assets.
+        let infoImage = UIImage.init(systemName: "questionmark")?.withTintColor(UIColor.iconColor, renderingMode: .automatic)
+        self.infoImageView.image = infoImage
+        
+        self.view.addSubview(self.infoImageView)
+        self.infoImageView.snp.makeConstraints{(make) -> Void in
+            make.height.width.equalTo(40)
+            make.left.equalTo(self.view).offset(15)
+            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
+        }
+    }
+    
+    /// Display the Info screen modally
+    @objc private func infoButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
+        let tutorial = TutorialModel(title: "Test", description: "This is my test. First grab a buddy and try the App!", image: UIImage.init(named: "AppIcon"))
+        let tutorialViewController = TutorialViewController(tutorialPages: [tutorial])
+        let navController = UINavigationController(rootViewController: tutorialViewController)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
     
@@ -270,6 +298,10 @@ class LandingTouchViewController: UIViewController {
             }
         }
         return self.colorArray[self.circles.keys.count + 1]
+    }
+    
+    private func isWithinBounds(of view: UIView, location: CGPoint) -> Bool {
+        return location.x > view.frame.origin.x && location.y < (view.frame.origin.y + self.settingsImageView.frame.size.height)
     }
 }
 

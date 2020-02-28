@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C06A46F8437F7C1071E5BB4 /* Pods_MyTurn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 369387DD3F3105DEDB415138 /* Pods_MyTurn.framework */; };
 		828112F5234013A6009843BD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828112F4234013A6009843BD /* RoundedButton.swift */; };
+		962A092F2409B815006845EF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A092E2409B815006845EF /* TutorialViewController.swift */; };
+		962A09312409B8B3006845EF /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A09302409B8B3006845EF /* TutorialModel.swift */; };
+		962A09332409BE57006845EF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A09322409BE57006845EF /* TutorialView.swift */; };
 		96C8368D233E777100149A2B /* LandingTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368C233E777100149A2B /* LandingTouchViewController.swift */; };
 		96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368E233E816E00149A2B /* SettingsViewController.swift */; };
 		96C83691233E829800149A2B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83690233E829800149A2B /* UIColorExtension.swift */; };
@@ -23,7 +27,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		369387DD3F3105DEDB415138 /* Pods_MyTurn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyTurn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5C7E632B43E588C578403D /* Pods-MyTurn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTurn.release.xcconfig"; path = "Target Support Files/Pods-MyTurn/Pods-MyTurn.release.xcconfig"; sourceTree = "<group>"; };
 		828112F4234013A6009843BD /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		962A092E2409B815006845EF /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		962A09302409B8B3006845EF /* TutorialModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
+		962A09322409BE57006845EF /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		96C8368C233E777100149A2B /* LandingTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingTouchViewController.swift; sourceTree = "<group>"; };
 		96C8368E233E816E00149A2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		96C83690233E829800149A2B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
