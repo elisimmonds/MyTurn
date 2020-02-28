@@ -52,7 +52,7 @@ class LandingTouchViewController: UIViewController {
                 continue
             }
             
-            let circleView = CircleView(color: colorArray[circles.count], size: circleSize)
+            let circleView = CircleView(color: self.getColorForCircle(), size: circleSize)
             self.view.addSubview(circleView)
             circleView.snp.makeConstraints{(make) -> Void in
                 make.height.width.equalTo(circleSize)
@@ -252,6 +252,24 @@ class LandingTouchViewController: UIViewController {
         circleView?.removeFromSuperview()
         // now that the view does not exist, we do not need to track it.
         circles.removeValue(forKey: touch)
+    }
+    
+    // Find the first unused color on screen and return it.
+    private func getColorForCircle() -> UIColor {
+        var existingColors = Array<UIColor>()
+        for circle in self.circles.values {
+            guard let color = circle.color else {
+                return self.colorArray[self.circles.keys.count + 1]
+            }
+            existingColors.append(color)
+        }
+        
+        for color in self.colorArray {
+            if !existingColors.contains(color) {
+                return color
+            }
+        }
+        return self.colorArray[self.circles.keys.count + 1]
     }
 }
 
