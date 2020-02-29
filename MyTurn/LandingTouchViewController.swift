@@ -50,7 +50,7 @@ class LandingTouchViewController: UIViewController {
             let location = touch.location(in: self.view)
             
             // check if the touch is within the settings button
-            if (self.isWithinBounds(of: self.settingsImageView, location: location) &&
+            if (self.isWithinBounds(of: self.settingsImageView, location: location) ||
                 self.isWithinBounds(of: self.infoImageView, location: location)) {
                 continue
             }
@@ -162,8 +162,8 @@ class LandingTouchViewController: UIViewController {
     /// Create & configure the info icon
     private func createInfoView() -> Void {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(infoButtonAction(tapGestureRecognizer:)))
-        self.settingsImageView.isUserInteractionEnabled = true
-        self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
+        self.infoImageView.isUserInteractionEnabled = true
+        self.infoImageView.addGestureRecognizer(tapGestureRecognizer)
         // Change the settings image color to match our color assets.
         let infoImage = UIImage.init(systemName: "questionmark")?.withTintColor(UIColor.iconColor, renderingMode: .automatic)
         self.infoImageView.image = infoImage
@@ -178,8 +178,11 @@ class LandingTouchViewController: UIViewController {
     
     /// Display the Info screen modally
     @objc private func infoButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
-        let tutorial = TutorialModel(title: "Test", description: "This is my test. First grab a buddy and try the App!", image: UIImage.init(named: "AppIcon"))
-        let tutorialViewController = TutorialViewController(tutorialPages: [tutorial])
+        let tutorials = [
+            TutorialModel(title: "Test", description: "This is my test. First grab a buddy and try the App!", image: UIImage.init(named: "AppIcon"))
+        ]
+        let appearance = TutorialAppearance(titleSize: 50, titleFont: "HelveticaNeue-Bold", descriptionSize: 15, descriptionFont: "HelveticaNeue-Bold", backgroundColor: UIColor.backgroundColor)
+        let tutorialViewController = TutorialViewController(tutorialPages: tutorials, tutorialAppearance: appearance)
         let navController = UINavigationController(rootViewController: tutorialViewController)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
@@ -301,7 +304,10 @@ class LandingTouchViewController: UIViewController {
     }
     
     private func isWithinBounds(of view: UIView, location: CGPoint) -> Bool {
-        return location.x > view.frame.origin.x && location.y < (view.frame.origin.y + self.settingsImageView.frame.size.height)
+        return location.x > view.frame.origin.x &&                                          // within left border
+            location.x < (view.frame.origin.x + view.frame.width) &&                        // within right border
+            location.y > view.frame.origin.y &&                                            // within top border
+            location.y < (view.frame.origin.y + self.settingsImageView.frame.size.height)   // within bottom border
     }
 }
 

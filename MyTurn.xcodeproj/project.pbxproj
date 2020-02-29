@@ -11,6 +11,7 @@
 		962A09372409C931006845EF /* TutorialModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A09342409C931006845EF /* TutorialModel.swift */; };
 		962A09382409C931006845EF /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A09352409C931006845EF /* TutorialView.swift */; };
 		962A09392409C931006845EF /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A09362409C931006845EF /* TutorialViewController.swift */; };
+		962A093B240AF090006845EF /* TutorialAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962A093A240AF090006845EF /* TutorialAppearance.swift */; };
 		96C8368D233E777100149A2B /* LandingTouchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368C233E777100149A2B /* LandingTouchViewController.swift */; };
 		96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8368E233E816E00149A2B /* SettingsViewController.swift */; };
 		96C83691233E829800149A2B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C83690233E829800149A2B /* UIColorExtension.swift */; };
@@ -33,6 +34,7 @@
 		962A09342409C931006845EF /* TutorialModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialModel.swift; sourceTree = "<group>"; };
 		962A09352409C931006845EF /* TutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		962A09362409C931006845EF /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		962A093A240AF090006845EF /* TutorialAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialAppearance.swift; sourceTree = "<group>"; };
 		96C8368C233E777100149A2B /* LandingTouchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingTouchViewController.swift; sourceTree = "<group>"; };
 		96C8368E233E816E00149A2B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		96C83690233E829800149A2B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 		96FB0A28233D3A5200DCFAB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96FB0A2A233D3A5200DCFAB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96FB0A30233D3A8B00DCFAB7 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B3351B97F702DBA5936865CB /* Pods-MyTurn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyTurn.release.xcconfig"; path = "Target Support Files/Pods-MyTurn/Pods-MyTurn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAC4314E50F9A7FC8755FD7F /* Pods_MyTurn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +70,7 @@
 				96FB0A1B233D3A5100DCFAB7 /* MyTurn */,
 				96FB0A1A233D3A5100DCFAB7 /* Products */,
 				EFD54C6A7C476B5446D6B62F /* Pods */,
+				E3C2471A3235F8A3EFBEB0DA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +88,7 @@
 				962A09342409C931006845EF /* TutorialModel.swift */,
 				962A09352409C931006845EF /* TutorialView.swift */,
 				962A09362409C931006845EF /* TutorialViewController.swift */,
+				962A093A240AF090006845EF /* TutorialAppearance.swift */,
 				96FB0A1C233D3A5100DCFAB7 /* AppDelegate.swift */,
 				96FB0A1E233D3A5100DCFAB7 /* SceneDelegate.swift */,
 				96C8368C233E777100149A2B /* LandingTouchViewController.swift */,
@@ -101,9 +107,19 @@
 			path = MyTurn;
 			sourceTree = "<group>";
 		};
+		E3C2471A3235F8A3EFBEB0DA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E945A219F6FE4F6B68DF9F9 /* Pods_MyTurn.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EFD54C6A7C476B5446D6B62F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				3AB1B26CAE048D54C6A2B5D6 /* Pods-MyTurn.debug.xcconfig */,
+				B3351B97F702DBA5936865CB /* Pods-MyTurn.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -115,9 +131,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96FB0A2D233D3A5200DCFAB7 /* Build configuration list for PBXNativeTarget "MyTurn" */;
 			buildPhases = (
+				BE177E8653B1C50C0E9F9E57 /* [CP] Check Pods Manifest.lock */,
 				96FB0A15233D3A5100DCFAB7 /* Sources */,
 				96FB0A16233D3A5100DCFAB7 /* Frameworks */,
 				96FB0A17233D3A5100DCFAB7 /* Resources */,
+				7EB2AB4936A1668D5657D1EC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,6 +192,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7EB2AB4936A1668D5657D1EC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyTurn/Pods-MyTurn-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyTurn/Pods-MyTurn-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyTurn/Pods-MyTurn-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE177E8653B1C50C0E9F9E57 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyTurn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		96FB0A15233D3A5100DCFAB7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -192,6 +252,7 @@
 				96C8368F233E816F00149A2B /* SettingsViewController.swift in Sources */,
 				96FB0A1F233D3A5100DCFAB7 /* SceneDelegate.swift in Sources */,
 				96C83691233E829800149A2B /* UIColorExtension.swift in Sources */,
+				962A093B240AF090006845EF /* TutorialAppearance.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,15 +394,18 @@
 		};
 		96FB0A2E233D3A5200DCFAB7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3AB1B26CAE048D54C6A2B5D6 /* Pods-MyTurn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6Z4G95PNNA;
 				INFOPLIST_FILE = MyTurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = eli.simmonds.MyTurn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -351,15 +415,18 @@
 		};
 		96FB0A2F233D3A5200DCFAB7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3351B97F702DBA5936865CB /* Pods-MyTurn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 6Z4G95PNNA;
 				INFOPLIST_FILE = MyTurn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = eli.simmonds.MyTurn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
