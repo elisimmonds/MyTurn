@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MyTutorial
 
 class LandingTouchViewController: UIViewController {
     private let settingsImageView = UIImageView()
