@@ -8,9 +8,11 @@
 
 import UIKit
 import SnapKit
+import MyTutorial
 
 class LandingTouchViewController: UIViewController {
     private let settingsImageView = UIImageView()
+    private let tutorialImageView = UIImageView()
     private let timerLabel = TimerLabel()
     private let resetButton = RoundedButton(title: "Reset")
     
@@ -26,9 +28,13 @@ class LandingTouchViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.backgroundColor
         self.view.isMultipleTouchEnabled = true
-        self.createSettingsView()
+        self.createSettingsIcon()
         self.createTimer()
         self.createResetButton()
+        self.createTutorialIcon()
+        if (self.isFirstLaunch()) {
+            self.launchTutorial()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,7 +54,8 @@ class LandingTouchViewController: UIViewController {
             let location = touch.location(in: self.view)
             
             // check if the touch is within the settings button
-            if (location.x > self.settingsImageView.frame.origin.x && location.y < (self.settingsImageView.frame.origin.y + self.settingsImageView.frame.size.height)) {
+            if (self.isWithinBounds(of: self.settingsImageView, location: location) ||
+                self.isWithinBounds(of: self.tutorialImageView, location: location)) {
                 continue
             }
             
@@ -133,7 +140,7 @@ class LandingTouchViewController: UIViewController {
     
     // MARK: Private Methods
     /// Create & configure the settings icon
-    private func createSettingsView() -> Void {
+    private func createSettingsIcon() -> Void {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(settingsButtonAction(tapGestureRecognizer:)))
         self.settingsImageView.isUserInteractionEnabled = true
         self.settingsImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -144,7 +151,7 @@ class LandingTouchViewController: UIViewController {
         self.view.addSubview(self.settingsImageView)
         self.settingsImageView.snp.makeConstraints{(make) -> Void in
             make.height.width.equalTo(40)
-            make.right.equalTo(self.view).offset(-15)
+            make.right.equalTo(self.view).inset(15)
             make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
         }
     }
@@ -153,6 +160,41 @@ class LandingTouchViewController: UIViewController {
     @objc private func settingsButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
         let settingsViewController = SettingsViewController()
         let navController = UINavigationController(rootViewController: settingsViewController)
+        self.navigationController?.present(navController, animated: true, completion: nil)
+    }
+    
+    /// Create & configure the tutorial icon
+    private func createTutorialIcon() -> Void {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tutorialButtonAction(tapGestureRecognizer:)))
+        self.tutorialImageView.isUserInteractionEnabled = true
+        self.tutorialImageView.addGestureRecognizer(tapGestureRecognizer)
+        // Change the settings image color to match our color assets.
+        let infoImage = UIImage.init(named: "TutorialIcon")?.withTintColor(UIColor.iconColor, renderingMode: .automatic)
+        self.tutorialImageView.image = infoImage
+        
+        self.view.addSubview(self.tutorialImageView)
+        self.tutorialImageView.snp.makeConstraints{(make) -> Void in
+            make.height.width.equalTo(40)
+            make.left.equalTo(self.view).offset(15)
+            make.top.equalTo(self.view).offset(UIApplication.shared.statusBarFrame.height)
+        }
+    }
+    
+    /// Tutorial button action
+    @objc private func tutorialButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
+        self.launchTutorial()
+    }
+    
+    /// Display the tutorial modally.
+    private func launchTutorial() -> Void {
+        let tutorials = [
+            TutorialModel(title: "Grab a friend", description: "This app requires between two and five people.", image: UIImage.init(named: "FriendIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor)),
+            TutorialModel(title: "Place a finger", description: "Each player should place their index finger on the screen and hold it for 3 seconds.", image: UIImage.init(named: "TouchIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor)),
+            TutorialModel(title: "Winner!", description: "One player has their finger circled. It's their turn!", image: UIImage.init(named: "WinnerIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor))
+        ]
+        let appearance = TutorialAppearance(titleSize: 50, titleFont: "HelveticaNeue-Bold", descriptionSize: 20, descriptionFont: "HelveticaNeue", backgroundColor: UIColor.backgroundColor)
+        let tutorialViewController = TutorialViewController(tutorialPages: tutorials, tutorialAppearance: appearance)
+        let navController = UINavigationController(rootViewController: tutorialViewController)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
     
@@ -270,6 +312,25 @@ class LandingTouchViewController: UIViewController {
             }
         }
         return self.colorArray[self.circles.keys.count + 1]
+    }
+    
+    private func isWithinBounds(of view: UIView, location: CGPoint) -> Bool {
+        return location.x > view.frame.origin.x &&                                          // within left border
+            location.x < (view.frame.origin.x + view.frame.width) &&                        // within right border
+            location.y > view.frame.origin.y &&                                            // within top border
+            location.y < (view.frame.origin.y + self.settingsImageView.frame.size.height)   // within bottom border
+    }
+    
+    /// Checks if this is the first time a user is launching the app.
+    func isFirstLaunch() -> Bool {
+      let defaults = UserDefaults.standard
+
+      if(defaults.integer(forKey: "hasRun") == 0) {
+          defaults.set(1, forKey: "hasRun")
+          return true
+      }
+      return false
+
     }
 }
 
