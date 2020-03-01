@@ -180,9 +180,11 @@ class LandingTouchViewController: UIViewController {
     /// Display the Info screen modally
     @objc private func infoButtonAction(tapGestureRecognizer: UITapGestureRecognizer) -> Void {
         let tutorials = [
-            TutorialModel(title: "Test", description: "This is my test. First grab a buddy and try the App!", image: UIImage.init(named: "AppIcon"))
+            TutorialModel(title: "Grab a friend", description: "This app requires between two and five people.", image: UIImage.init(named: "FriendIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor)),
+            TutorialModel(title: "Place a finger", description: "Each player should place their index finger on the screen and hold it for 3 seconds.", image: UIImage.init(named: "TouchIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor)),
+            TutorialModel(title: "Winner!", description: "One player has their finger circled. It's their turn!", image: UIImage.init(named: "WinnerIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor))
         ]
-        let appearance = TutorialAppearance(titleSize: 50, titleFont: "HelveticaNeue-Bold", descriptionSize: 15, descriptionFont: "HelveticaNeue-Bold", backgroundColor: UIColor.backgroundColor)
+        let appearance = TutorialAppearance(titleSize: 50, titleFont: "HelveticaNeue-Bold", descriptionSize: 20, descriptionFont: "HelveticaNeue", backgroundColor: UIColor.backgroundColor)
         let tutorialViewController = TutorialViewController(tutorialPages: tutorials, tutorialAppearance: appearance)
         let navController = UINavigationController(rootViewController: tutorialViewController)
         self.navigationController?.present(navController, animated: true, completion: nil)
