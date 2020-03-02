@@ -15,6 +15,7 @@ class LandingTouchViewController: UIViewController {
     private let tutorialImageView = UIImageView()
     private let timerLabel = TimerLabel()
     private let resetButton = RoundedButton(title: "Reset")
+    private let displayResetButton = false
     
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private var timer: Timer?
@@ -30,11 +31,9 @@ class LandingTouchViewController: UIViewController {
         self.view.isMultipleTouchEnabled = true
         self.createSettingsIcon()
         self.createTimer()
-        self.createResetButton()
         self.createTutorialIcon()
-        if (self.isFirstLaunch()) {
-            self.launchTutorial()
-        }
+        if (self.displayResetButton) { self.createResetButton() }
+        if (self.isFirstLaunch()) { self.launchTutorial() }
     }
     
     override func viewWillAppear(_ animated: Bool) {
