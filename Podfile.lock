@@ -14,12 +14,12 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   MyTutorial:
     :path: "~/Code/MyTutorial"
-    :version: '1.0'
+    :version: '1.1'
 
 SPEC CHECKSUMS:
   MyTutorial: 607add8abd4e808da9f12a0f541f56f66d86fbaf
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 7f054a707050b3407afc80b04239bb65947d53f9
+PODFILE CHECKSUM: b8bf163579bc4b344c6cc655afefa96102daf6f1
 
 COCOAPODS: 1.8.0
