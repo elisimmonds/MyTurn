@@ -4,7 +4,7 @@ PODS:
   - SnapKit (5.0.1)
 
 DEPENDENCIES:
-  - MyTutorial (from `~/Code/MyTutorial`)
+  - MyTutorial (from `https://github.com/elisimmonds/MyTutorial.git`)
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
@@ -13,13 +13,17 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   MyTutorial:
-    :path: "~/Code/MyTutorial"
-    :version: '1.1'
+    :git: https://github.com/elisimmonds/MyTutorial.git
+
+CHECKOUT OPTIONS:
+  MyTutorial:
+    :commit: 27547b5df63f77f29738b1cc53d64e628886b08b
+    :git: https://github.com/elisimmonds/MyTutorial.git
 
 SPEC CHECKSUMS:
   MyTutorial: 607add8abd4e808da9f12a0f541f56f66d86fbaf
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: b8bf163579bc4b344c6cc655afefa96102daf6f1
+PODFILE CHECKSUM: a8c0910c050ff3ec1dd315660b9e5d0a54db7733
 
 COCOAPODS: 1.8.0

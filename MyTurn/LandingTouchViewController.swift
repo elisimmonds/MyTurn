@@ -192,7 +192,7 @@ class LandingTouchViewController: UIViewController {
             TutorialModel(title: "Winner!", description: "One player has their finger circled. It's their turn!", image: UIImage.init(named: "WinnerIcon")?.withRenderingMode(.alwaysTemplate).withTintColor(UIColor.iconColor))
         ]
         let appearance = TutorialAppearance(titleSize: 50, titleFont: "HelveticaNeue-Bold", descriptionSize: 20, descriptionFont: "HelveticaNeue", backgroundColor: UIColor.backgroundColor)
-        let tutorialViewController = TutorialViewController(tutorialPages: tutorials, tutorialAppearance: appearance)
+        let tutorialViewController = TutorialViewController(tutorialPages: tutorials, tutorialAppearance: appearance, completion: nil)
         let navController = UINavigationController(rootViewController: tutorialViewController)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
